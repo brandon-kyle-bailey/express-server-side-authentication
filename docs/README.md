@@ -5,3 +5,11 @@ Server Side Express-Validation using Node.js &amp; Express
 A clients web browser could have Javascript disabled. This would
 bypass any client side Javascript you may have written for events such
 as form submission.
+
+### To start this project
+
+- clone the repository
+- cd app
+- npm install
+- npm start
+- navigate to http://localhost:8080/
