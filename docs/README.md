@@ -13,3 +13,10 @@ as form submission.
 - npm install
 - npm start
 - navigate to http://localhost:8080/
+
+### Create your own project
+
+- cd app
+- npm init
+- npm install express --save
+- npm install nodemon --save
