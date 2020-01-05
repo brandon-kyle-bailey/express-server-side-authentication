@@ -7,16 +7,17 @@ bypass any client side Javascript you may have written for events such
 as form submission.
 
 ### To start this project
-
+```
 - clone the repository
 - cd app
 - npm install
 - npm start
 - navigate to http://localhost:8080/
-
+```
 ### Create your own project
-
+```
 - cd app
 - npm init
 - npm install express --save
 - npm install nodemon --save
+```
