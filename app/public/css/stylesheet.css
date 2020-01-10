@@ -30,3 +30,13 @@ input {
     border: none;
     height: 35px;
 }
+
+.error-container {
+    background: #ddaaaa;
+    padding: 2px;
+    display: none;
+}
+
+.error {
+    color: #e03d3d;
+}

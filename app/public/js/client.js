@@ -13,7 +13,16 @@ function submitData(e) {
 
     fetch('http://localhost:8080/submit/user', params)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+
+            document.querySelector('.error-container').style.display = 'block';
+            const error = document.querySelector('.error');
+
+            error.innerHTML = data.errors.map(error => {
+                return `<li>${error.msg}</li>`
+            }).join('');
+
+        })
         .catch(err => console.log(err))
 };
 
