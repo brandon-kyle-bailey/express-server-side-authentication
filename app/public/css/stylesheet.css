@@ -32,7 +32,6 @@ input {
 }
 
 .error-container {
-    background: #ddaaaa;
     padding: 2px;
     display: none;
 }
