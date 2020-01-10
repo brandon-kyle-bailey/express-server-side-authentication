@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import bodyParser from 'body-parser';
 
 const __dirname = path.resolve();
 const port = process.env.PORT || 8080;
