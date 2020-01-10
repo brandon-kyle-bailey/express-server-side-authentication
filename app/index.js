@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-import { check, validationResult } from 'express-validator';
+import ExpressValidator from 'express-validator';
 
 let urlencoded = bodyParser.urlencoded({ urlencoded: false, extended: true });
 
@@ -15,19 +15,19 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
-})
+});
 
 app.post('/submit', [
-    check('name').not().isEmpty(),
-    check('email').not().isEmpty()
+    ExpressValidator.check('name').not().isEmpty(),
+    ExpressValidator.check('email').not().isEmpty()
 ], (req, res) => {
-    const errors = validationResult(req);
+    const errors = ExpressValidator.validationResult(req);
 
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
     }
 
-    response.status(202).json({ success: 'Ok' });
+    res.status(202).json({ success: 'Ok' });
 });
 
 app.listen(port, () => console.log(`Server running, visit http://localhost/${port}`));
