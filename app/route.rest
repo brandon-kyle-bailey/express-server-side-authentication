@@ -1,0 +1,13 @@
+GET http://localhost:8080/users
+###
+GET http://localhost:8080/submit/user/
+###
+POST http://localhost:8080/submit/user
+content-Type: application/json
+
+{
+    "name": "Test",
+    "subscribedToChannel": "BrandonBailey"
+}
+###
+DELETE http://localhost:8080/user/

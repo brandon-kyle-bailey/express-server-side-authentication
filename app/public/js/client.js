@@ -11,7 +11,7 @@ function submitData(e) {
         method: 'POST'
     };
 
-    fetch('http://localhost:8080/submit', params)
+    fetch('http://localhost:8080/submit/user', params)
         .then(res => res.json())
         .then(data => console.log(data))
         .catch(err => console.log(err))
