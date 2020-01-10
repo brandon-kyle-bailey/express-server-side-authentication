@@ -1,0 +1,16 @@
+.container {
+    background: #eee;
+    box-shadow: 1px 8px 12px 0 #000;
+    padding: 10px 30px;
+    margin: 100px auto;
+    width: 85%;
+}
+
+input {
+    width: 100%;
+}
+
+.label,
+.input {
+    margin-bottom: 10px;
+}
