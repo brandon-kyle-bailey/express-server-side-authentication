@@ -1,13 +1,14 @@
 import express from 'express';
 import path from 'path';
 
+const __dirname = path.resolve();
+const port = process.env.PORT || 8080;
 const app = express();
 
-const port = process.env.PORT || 8080;
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-    // res.send("Success!");
-    res.sendFile(path.join(path.resolve() + '/index.html'));
+    res.sendFile(path.join(__dirname + '/index.html'));
 })
 
 app.listen(port, () => console.log(`Server running, visit http://localhost/${port}`));
