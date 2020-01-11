@@ -36,8 +36,16 @@ app.get('/', (req, res) => {
 
 // post request for form submission
 app.post('/submit/user', [
-    ExpressValidator.check('name').not().isEmpty(),
-    ExpressValidator.check('email').not().isEmpty()
+    ExpressValidator.check('name')
+    .not()
+    .isEmpty()
+    .isLength({ min: 3 }),
+
+    ExpressValidator.check('email')
+    .not()
+    .isEmpty()
+    .isEmail()
+
 ], async(req, res) => {
     const errors = ExpressValidator.validationResult(req);
 
