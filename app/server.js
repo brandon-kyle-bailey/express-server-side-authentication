@@ -36,19 +36,19 @@ app.get('/', (req, res) => {
 
 // post request for form submission
 app.post('/submit/user', [
-    ExpressValidator.check('name')
+    ExpressValidator.check('name', 'Name is not valid.')
     .not()
     .isEmpty()
     .isLength({ min: 3 })
     .withMessage('Name must be at least three characters.'),
 
-    ExpressValidator.check('email')
+    ExpressValidator.check('email', 'Email is not valid.')
     .not()
     .isEmpty()
     .isEmail()
     .withMessage('Email must be a valid email address.'),
 
-    ExpressValidator.check('password')
+    ExpressValidator.check('password', 'Password is not valid.')
     .not()
     .isEmpty()
     .isLength({ min: 5 })
