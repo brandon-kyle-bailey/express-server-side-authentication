@@ -52,6 +52,12 @@ app.post('/submit/user', [
     .not()
     .isEmpty()
     .isLength({ min: 5 })
+    .withMessage('Password must be at least five characters.'),
+
+    ExpressValidator.check('postcode', 'Post code is not valid.')
+    .not()
+    .isEmpty()
+    .isLength({ min: 5 })
     .withMessage('Password must be at least five characters.')
 
 ], async(req, res) => {
@@ -64,15 +70,14 @@ app.post('/submit/user', [
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        postcode: req.body.postcode
     });
     await user.save()
         .then((newUser) => {
             if (newUser) res.status(202).json(newUser);
         })
         .catch((err) => res.status(400).json({ message: err.message }));
-
-    // res.status(202).json({ success: 'Ok' });
 });
 
 
