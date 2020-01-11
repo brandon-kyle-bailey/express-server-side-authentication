@@ -44,7 +44,12 @@ app.post('/submit/user', [
     ExpressValidator.check('email')
     .not()
     .isEmpty()
-    .isEmail()
+    .isEmail(),
+
+    ExpressValidator.check('password')
+    .not()
+    .isEmpty()
+    .isLength({ min: 5 })
 
 ], async(req, res) => {
     const errors = ExpressValidator.validationResult(req);
@@ -55,7 +60,8 @@ app.post('/submit/user', [
 
     const user = new User({
         name: req.body.name,
-        email: req.body.email
+        email: req.body.email,
+        password: req.body.password
     });
     await user.save()
         .then((newUser) => {
