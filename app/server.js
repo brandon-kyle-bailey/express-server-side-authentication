@@ -39,17 +39,20 @@ app.post('/submit/user', [
     ExpressValidator.check('name')
     .not()
     .isEmpty()
-    .isLength({ min: 3 }),
+    .isLength({ min: 3 })
+    .withMessage('Name must be at least three characters.'),
 
     ExpressValidator.check('email')
     .not()
     .isEmpty()
-    .isEmail(),
+    .isEmail()
+    .withMessage('Email must be a valid email address.'),
 
     ExpressValidator.check('password')
     .not()
     .isEmpty()
     .isLength({ min: 5 })
+    .withMessage('Password must be at least five characters.')
 
 ], async(req, res) => {
     const errors = ExpressValidator.validationResult(req);
