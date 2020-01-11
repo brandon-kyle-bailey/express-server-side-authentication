@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     postcode: {
-        type: Number,
+        type: String,
         required: true
     },
 }, { collection: "user" })

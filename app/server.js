@@ -4,6 +4,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import ExpressValidator from 'express-validator';
 import mongoose from 'mongoose';
+import { encode, decode } from './utils/encoder.js';
 
 import User from './models/user.js';
 
@@ -57,8 +58,9 @@ app.post('/submit/user', [
     ExpressValidator.check('postcode', 'Post code is not valid.')
     .not()
     .isEmpty()
-    .isLength({ min: 5 })
-    .withMessage('Password must be at least five characters.')
+    .isAlphanumeric()
+    .isPostalCode('GB')
+    .withMessage('Post code must be a UK postal code.')
 
 ], async(req, res) => {
     const errors = ExpressValidator.validationResult(req);
@@ -70,7 +72,7 @@ app.post('/submit/user', [
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
+        password: encode(req.body.password),
         postcode: req.body.postcode
     });
     await user.save()
@@ -82,4 +84,6 @@ app.post('/submit/user', [
 
 
 // run server
-app.listen(port, () => console.log(`Server running, visit http://localhost/${port}`));
+app.listen(port, () => {
+    console.log(`Server running, visit http://localhost/${port}`)
+});
